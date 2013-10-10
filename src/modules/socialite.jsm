@@ -29,12 +29,13 @@ var Socialite =
 
     openUILink: function(url, e) {
       let win = windowManager.getMostRecentWindow("navigator:browser");
-      win.openUILink(url, e);
+	  // This respects browser.tabs.loadInBackground
+      win.openLinkIn(url, win.whereToOpenLink(e), {});
     },
     
     openUILinkIn: function(url, where) {
       let win = windowManager.getMostRecentWindow("navigator:browser");
-      win.openUILinkIn(url, where);
+      win.openLinkIn(url, where, {});
     },
     
     showNotification: function(title, message, icon, name, listener, data) {
